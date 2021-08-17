@@ -1,3 +1,4 @@
+                                            
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver import Firefox
@@ -6,11 +7,11 @@ options = Options()
 options.add_argument("--headless")
 # Don't put the path to geckodriver in the following. But the firefox executable
 # must be in the path. If not, include the path to firefox, not geckodriver below.
-driver = Firefox(firefox_options=options)
+driver = Firefox(options=options)
 
 print("Firefox Headless Browser Invoked")
-driver.get('http://google.com/')
+driver.get('http://www.thewrestlinggame.com')
 
 # Print the first 300 characters on the page.
-print(driver.page_source[:300])
+print(driver.page_source)
 driver.quit()
