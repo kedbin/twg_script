@@ -1,0 +1,24 @@
+from requests_html import AsyncHTMLSession
+import asyncio
+
+async def login(s):
+	r = session.post('https://www.thewrestlinggame.com/wg/login_account.asp',headers=headers,data=data)
+	r = r.html.links
+	for link in r:
+	        if '/en.thewrestlinggame.com/wg/login.asp?' in link:
+	                print(link)
+	                login=link
+	r = session.get(login)
+	r = session.get('https://en.thewrestlinggame.com/wg/ajax/profile.asp?t=2')
+
+async def fight(s):
+    for i in range(0,5):
+        r = session.get(f'https://en.thewrestlinggame.com/wg/ajax/challenge.asp?rr=0.6873480522167201&id={enemy[0]}&tipo_match=1',headers=headers1)
+        x = r.html.text[53:89:]
+        r = session.get('https://en.thewrestlinggame.com/wg/ajax/'+x)
+async def event(s):
+	r = session.get('https://en.thewrestlinggame.com/wg/events/e8/json/json.asp?spin=spin',headers=headers1)
+	r = session.get('https://en.thewrestlinggame.com/wg/events/e8/json/json.asp?spin=match',headers=headers1)
+	r = session.get('https://en.thewrestlinggame.com/wg/events/e8/json/start_match.asp',headers=headers1)
+	x = r.html.text[53:89:]
+	r = session.get('https://en.thewrestlinggame.com/wg/ajax/'+x)
